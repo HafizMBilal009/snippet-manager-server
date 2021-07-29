@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:3000',
-      'https://snippetmanager-datumbrain.netlify.app/',
+      'https://snippetmanager-datumbrain.netlify.app',
     ],
     credentials: true,
   })

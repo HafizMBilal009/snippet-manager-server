@@ -108,7 +108,21 @@ router.get('/loggedIn', (req, res) => {
 
 router.get('/logout', (req, res) => {
   try {
-    res.clearCookie('token').send();
+    res
+      .cookie('token', '', {
+        httpOnly: true,
+        sameSite:
+          process.env.NODE_ENV === 'development'
+            ? 'lax'
+            : process.env.NODE_ENV === 'production' && 'none',
+        secure:
+          process.env.NODE_ENV === 'development'
+            ? false
+            : process.env.NODE_ENV === 'production' && true,
+
+        expires: new Date(0),
+      })
+      .send();
   } catch {
     return res.json(null);
   }

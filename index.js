@@ -29,4 +29,6 @@ mongoose.connect(
     console.log('Connected to MongoDB');
   }
 );
-app.listen(5000, () => console.log('Started server on port 5000.'));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Started server on port ${PORT}.`));
